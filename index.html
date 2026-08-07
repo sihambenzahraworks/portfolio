@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ben Zahra Siham | Portfolio</title>
+
+  <!-- Bootstrap 5.3 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+  <style>
+    :root {
+      --bg-body: #f8fafc;
+      --bg-card: #ffffff;
+      --accent-purple: #8B5CF6;
+      --accent-pink: #EC4899;
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --border-color: #e2e8f0;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: var(--bg-body);
+      color: var(--text-main);
+      overflow-x: hidden;
+    }
+
+    /* --- Navbar --- */
+    .navbar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: transparent;
+      transition: all 0.4s ease;
+      z-index: 1000;
+      padding: 16px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .navbar.scrolled {
+      background: rgba(255, 255, 255, 0.95) !important;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .navbar-brand {
+      font-weight: 800;
+      font-size: 1.4rem;
+      color: #ffffff !important;
+      letter-spacing: -0.5px;
+      transition: 0.3s;
+    }
+
+    .navbar.scrolled .navbar-brand {
+      color: var(--text-main) !important;
+    }
+
+    .navbar-brand span {
+      color: var(--accent-pink);
+    }
+
+    .nav-link {
+      color: rgba(255, 255, 255, 0.85) !important;
+      font-weight: 600;
+      margin: 4px 8px;
+      transition: 0.3s;
+    }
+
+    .navbar.scrolled .nav-link {
+      color: var(--text-muted) !important;
+    }
+
+    .nav-link:hover, .nav-link.active {
+      color: #ffffff !important;
+    }
+
+    .navbar.scrolled .nav-link:hover, 
+    .navbar.scrolled .nav-link.active {
+      color: var(--accent-purple) !important;
+    }
+
+    .btn-contact-nav {
+      background: linear-gradient(135deg, var(--accent-purple), var(--accent-pink));
+      color: #fff !important;
+      border: none;
+      border-radius: 30px;
+      padding: 9px 24px;
+      font-weight: 600;
+      transition: 0.3s ease;
+      display: inline-block;
+      text-align: center;
+    }
+
+    /* --- Hero Section --- */
+    .hero {
+      position: relative;
+      padding: 130px 0 60px;
+      background: linear-gradient(rgba(15, 23, 42, 0.78), rgba(15, 23, 42, 0.88)), 
+                  url("https://videocdn.cdnpk.net/videos/075ebfb0-f020-5cbe-b987-38b770aeb59a/horizontal/thumbnails/large.jpg?semt=ais_hybrid&item_id=4261397&w=740&q=80") center center / cover no-repeat fixed;
+      color: #ffffff;
+      overflow: hidden;
+    }
+
+    .hero-title {
+      font-weight: 800;
+      font-size: 2.2rem;
+      line-height: 1.25;
+    }
+
+    .hero-greeting {
+      font-size: 1.1rem;
+      color: #f472b6;
+      font-weight: 600;
+    }
+
+    .gradient-text {
+      background: linear-gradient(90deg, #A78BFA, #F472B6, #60A5FA, #A78BFA);
+      background-size: 300% 100%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: gradientMove 6s linear infinite;
+    }
+
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 300% 50%; }
+    }
+
+    .social-icon-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #ffffff;
+      font-size: 1.1rem;
+      margin: 0 4px;
+      transition: 0.3s;
+      text-decoration: none;
+    }
+
+    /* Ticker Slider */
+    .slider {
+      width: 100%;
+      overflow: hidden;
+      white-space: nowrap;
+      margin-top: 40px;
+      padding: 15px 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.15);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+      background: rgba(15, 23, 42, 0.5);
+    }
+
+    .slide-track {
+      display: flex;
+      width: max-content;
+      animation: scroll 25s linear infinite;
+    }
+
+    .skill-badge {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 8px 18px;
+      border-radius: 30px;
+      margin-right: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: #ffffff;
+    }
+
+    @keyframes scroll {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    /* --- Features & Cards --- */
+    .section-title {
+      font-weight: 800;
+      font-size: 1.8rem;
+      margin-bottom: 8px;
+      color: var(--text-main);
+    }
+
+    .feature-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 24px 18px;
+      height: 100%;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+    }
+
+    .feature-card i {
+      font-size: 2rem;
+      color: var(--accent-purple);
+    }
+
+    /* --- Process Step Cards --- */
+    .process-icon {
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      background: rgba(124, 58, 237, 0.08);
+      border: 2px solid var(--accent-purple);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 10px;
+      color: var(--accent-purple);
+      font-size: 1.3rem;
+    }
+
+    /* --- Project Cards --- */
+    .project-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+    }
+
+    .project-img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    /* Accordions */
+    .accordion-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      margin-bottom: 10px;
+      border-radius: 12px !important;
+      overflow: hidden;
+    }
+
+    .accordion-button {
+      font-weight: 600;
+      box-shadow: none !important;
+      font-size: 0.95rem;
+    }
+
+    .form-control {
+      background: var(--bg-body);
+      border: 1px solid var(--border-color);
+      color: var(--text-main);
+      border-radius: 10px;
+      padding: 12px 15px;
+    }
+
+    /* --- Responsive Mobile Styles --- */
+    @media (max-width: 991.98px) {
+      /* Mobile Menu Styling */
+      .navbar-collapse {
+        background: #0f172a;
+        padding: 20px;
+        border-radius: 16px;
+        margin-top: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+      }
+      
+      .navbar.scrolled .navbar-collapse {
+        background: #ffffff;
+        border-color: var(--border-color);
+      }
+
+      .navbar.scrolled .nav-link {
+        color: var(--text-main) !important;
+      }
+
+      .btn-mobile-nav {
+        width: 100%;
+        margin-top: 10px;
+      }
+    }
+
+    @media (min-width: 768px) {
+      .hero {
+        padding: 170px 0 0px;
+      }
+      .hero-title {
+        font-size: 3.2rem;
+      }
+      .section-title {
+        font-size: 2.2rem;
+      }
+    }
+
+    /* Fixed background fix for mobile browsers */
+    @media (max-width: 767.98px) {
+      .hero {
+        background-attachment: scroll;
+      }
+    }
+
+    /* Animations */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.6s ease;
+    }
+
+    .fade-up.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg">
+    <div class="container">
+      <a class="navbar-brand" href="#">SIHAM<span>.</span></a>
+
+      <button class="navbar-toggler border-0 text-white shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <i class="bi bi-list fs-1 text-white navbar-toggler-icon-custom"></i>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto me-lg-4 mb-3 mb-lg-0">
+          <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+          <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        </ul>
+        
+        <div>
+          <a href="#contact" class="btn btn-contact-nav btn-mobile-nav">Let's Talk</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero text-center">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-10">
+          <p class="hero-greeting mb-2">Hi 👋, I'm Ben Zahra Siham</p>
+          <h1 class="hero-title gradient-text mb-3">
+            BUILDING MODERN &amp; SCALABLE WEBSITES
+          </h1>
+          <p class="lead text-light opacity-75 mb-4 mx-auto px-2 fs-6 fs-md-5" style="max-width: 650px;">
+            Full-Stack Developer &amp; UI/UX Enthusiast. I specialize in building custom, high-performance web applications tailored to your business needs.
+          </p>
+
+          <div class="d-flex flex-column flex-sm-row justify-content-center gap-2 gap-sm-3 mb-4 px-3">
+            <a href="#projects" class="btn btn-contact-nav px-4 py-2">View Work</a>
+            <a href="#contact" class="btn btn-outline-light rounded-pill px-4 py-2">Contact Me</a>
+          </div>
+
+          <!-- Socials -->
+          <div class="mt-3">
+            <a href="#" class="social-icon-btn"><i class="bi bi-linkedin"></i></a>
+            <a href="#" class="social-icon-btn"><i class="bi bi-github"></i></a>
+            <a href="#" class="social-icon-btn"><i class="bi bi-whatsapp"></i></a>
+            <a href="#" class="social-icon-btn"><i class="bi bi-envelope-fill"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Ticker Tech Slider -->
+    <div class="slider">
+      <div class="slide-track">
+        <div class="skill-badge"><i class="fa-brands fa-php text-primary fs-5"></i> PHP</div>
+        <div class="skill-badge"><i class="fa-brands fa-laravel text-danger fs-5"></i> Laravel</div>
+        <div class="skill-badge"><i class="fa-brands fa-js text-warning fs-5"></i> JavaScript</div>
+        <div class="skill-badge"><i class="fa-brands fa-react text-info fs-5"></i> React.js</div>
+        <div class="skill-badge"><i class="fa-brands fa-bootstrap text-purple fs-5"></i> Bootstrap 5</div>
+        <div class="skill-badge"><i class="fa-solid fa-database text-light fs-5"></i> MySQL</div>
+        <div class="skill-badge"><i class="fa-brands fa-wordpress text-primary fs-5"></i> WordPress</div>
+
+        <!-- Loop duplicates -->
+        <div class="skill-badge"><i class="fa-brands fa-php text-primary fs-5"></i> PHP</div>
+        <div class="skill-badge"><i class="fa-brands fa-laravel text-danger fs-5"></i> Laravel</div>
+        <div class="skill-badge"><i class="fa-brands fa-js text-warning fs-5"></i> JavaScript</div>
+        <div class="skill-badge"><i class="fa-brands fa-react text-info fs-5"></i> React.js</div>
+        <div class="skill-badge"><i class="fa-brands fa-bootstrap text-purple fs-5"></i> Bootstrap 5</div>
+        <div class="skill-badge"><i class="fa-solid fa-database text-light fs-5"></i> MySQL</div>
+        <div class="skill-badge"><i class="fa-brands fa-wordpress text-primary fs-5"></i> WordPress</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section id="services" class="py-5 animate-section">
+    <div class="container py-2">
+      <div class="text-center mb-4 mb-md-5">
+        <h2 class="section-title">Why Work With Me?</h2>
+        <p class="text-muted small fs-6">High standards in architecture, speed, security, and responsive UI design.</p>
+      </div>
+
+      <div class="row g-3 g-md-4">
+        <div class="col-6 col-md-4 col-lg-2 fade-up">
+          <div class="feature-card text-center">
+            <i class="bi bi-code-slash mb-2 mb-md-3 d-block"></i>
+            <h6 class="fw-bold mb-1">Clean Code</h6>
+            <p class="small text-muted mb-0 d-none d-sm-block">Maintainable architecture.</p>
+          </div>
+        </div>
+        <div class="col-6 col-md-4 col-lg-2 fade-up">
+          <div class="feature-card text-center">
+            <i class="bi bi-lightning-charge mb-2 mb-md-3 d-block"></i>
+            <h6 class="fw-bold mb-1">Fast Speed</h6>
+            <p class="small text-muted mb-0 d-none d-sm-block">Optimized performance.</p>
+          </div>
+        </div>
+        <div class="col-6 col-md-4 col-lg-2 fade-up">
+          <div class="feature-card text-center">
+            <i class="bi bi-phone mb-2 mb-md-3 d-block"></i>
+            <h6 class="fw-bold mb-1">Responsive</h6>
+            <p class="small text-muted mb-0 d-none d-sm-block">Great on all screens.</p>
+          </div>
+        </div>
+        <div class="col-6 col-md-4 col-lg-2 fade-up">
+          <div class="feature-card text-center">
+            <i class="bi bi-palette mb-2 mb-md-3 d-block"></i>
+            <h6 class="fw-bold mb-1">Modern UI</h6>
+            <p class="small text-muted mb-0 d-none d-sm-block">User-friendly layout.</p>
+          </div>
+        </div>
+        <div class="col-6 col-md-4 col-lg-2 fade-up">
+          <div class="feature-card text-center">
+            <i class="bi bi-shield-check mb-2 mb-md-3 d-block"></i>
+            <h6 class="fw-bold mb-1">Secure</h6>
+            <p class="small text-muted mb-0 d-none d-sm-block">Vulnerability protected.</p>
+          </div>
+        </div>
+        <div class="col-6 col-md-4 col-lg-2 fade-up">
+          <div class="feature-card text-center">
+            <i class="bi bi-graph-up-arrow mb-2 mb-md-3 d-block"></i>
+            <h6 class="fw-bold mb-1">SEO Friendly</h6>
+            <p class="small text-muted mb-0 d-none d-sm-block">Google search ready.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="py-5 bg-white border-top border-bottom border-slate-200">
+    <div class="container">
+      <div class="row align-items-center g-4 g-lg-5">
+        <div class="col-lg-5 text-center text-lg-start">
+          <img src="https://camo.githubusercontent.com/484e8fc70a5b29ee8c58e5d17ad1123f8ffd200ef61064b7e3624fdf6d7e5de0/68747470733a2f2f63646e2e6472696262626c652e636f6d2f75736572732f313331343437352f73637265656e73686f74732f333033313336382f6d652e676966" class="img-fluid rounded-4 shadow-sm border" alt="Developer Workspace">
+        </div>
+        <div class="col-lg-7">
+          <h2 class="section-title">About Me</h2>
+          <p class="text-muted leading-relaxed mb-4">
+            I am a passionate web developer based in Meknes, Morocco. With strong experience in both frontend user experience and backend database design, I deliver scalable web applications that help businesses grow.
+          </p>
+
+          <div class="row g-2 mb-4">
+            <div class="col-sm-6">
+              <p class="mb-2 small fw-semibold"><i class="bi bi-check-circle-fill text-primary me-2"></i> Clean Architecture</p>
+              <p class="mb-2 small fw-semibold"><i class="bi bi-check-circle-fill text-primary me-2"></i> Full-Stack Apps</p>
+            </div>
+            <div class="col-sm-6">
+              <p class="mb-2 small fw-semibold"><i class="bi bi-check-circle-fill text-primary me-2"></i> REST API Integration</p>
+              <p class="mb-2 small fw-semibold"><i class="bi bi-check-circle-fill text-primary me-2"></i> Turnaround &amp; Support</p>
+            </div>
+          </div>
+
+          <div class="p-3 rounded-3 bg-light border">
+            <div class="row text-muted small g-2">
+              <div class="col-12 col-sm-4"><strong>Location:</strong><br>Meknes, Morocco</div>
+              <div class="col-12 col-sm-4"><strong>Email:</strong><br>sihambenzahra.works@gmail.com</div>
+              <div class="col-12 col-sm-4"><strong>Status:</strong><br><span class="text-success">● Available for Hire</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process -->
+  <section class="py-5">
+    <div class="container">
+      <div class="text-center mb-4 mb-md-5">
+        <h2 class="section-title">Development Process</h2>
+        <p class="text-muted small">A structured approach from concept to deployment.</p>
+      </div>
+
+      <div class="row g-3 g-md-4">
+        <div class="col-4 col-md-4 col-lg-2 process-step text-center">
+          <div class="process-icon"><i class="fa-solid fa-magnifying-glass"></i></div>
+          <h6 class="fw-bold small">1. Discover</h6>
+        </div>
+        <div class="col-4 col-md-4 col-lg-2 process-step text-center">
+          <div class="process-icon"><i class="fa-solid fa-pen-ruler"></i></div>
+          <h6 class="fw-bold small">2. Wireframe</h6>
+        </div>
+        <div class="col-4 col-md-4 col-lg-2 process-step text-center">
+          <div class="process-icon"><i class="fa-solid fa-palette"></i></div>
+          <h6 class="fw-bold small">3. Design</h6>
+        </div>
+        <div class="col-4 col-md-4 col-lg-2 process-step text-center">
+          <div class="process-icon"><i class="fa-solid fa-code"></i></div>
+          <h6 class="fw-bold small">4. Develop</h6>
+        </div>
+        <div class="col-4 col-md-4 col-lg-2 process-step text-center">
+          <div class="process-icon"><i class="fa-solid fa-vial-circle-check"></i></div>
+          <h6 class="fw-bold small">5. Test</h6>
+        </div>
+        <div class="col-4 col-md-4 col-lg-2 process-step text-center">
+          <div class="process-icon"><i class="fa-solid fa-rocket"></i></div>
+          <h6 class="fw-bold small">6. Launch</h6>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" class="py-5 bg-white border-top border-bottom border-slate-200 animate-section">
+    <div class="container py-2">
+      <div class="text-center mb-4 mb-md-5">
+        <h2 class="section-title">Featured Projects</h2>
+        <p class="text-muted small">Explore recent web design and development projects.</p>
+      </div>
+
+      <div class="row g-4">
+        <!-- Project 1 -->
+        <div class="col-md-6 col-lg-4 fade-up">
+          <div class="project-card h-100 p-3">
+            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=500&q=80" class="project-img rounded-3 mb-3" alt="Project Thumbnail">
+            <span class="badge bg-primary-subtle text-primary border border-primary-subtle mb-2">Laravel / Vue</span>
+            <h5 class="fw-bold fs-6 fs-md-5">E-Commerce System</h5>
+            <p class="small text-muted">Custom web store with secure payment processing and inventory dashboard.</p>
+            <a href="#" class="btn btn-sm btn-outline-dark rounded-pill w-100 w-sm-auto">View Project</a>
+          </div>
+        </div>
+        <!-- Project 2 -->
+        <div class="col-md-6 col-lg-4 fade-up">
+          <div class="project-card h-100 p-3">
+            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=500&q=80" class="project-img rounded-3 mb-3" alt="Project Thumbnail">
+            <span class="badge bg-purple-subtle text-purple border mb-2">PHP / MySQL</span>
+            <h5 class="fw-bold fs-6 fs-md-5">Task Management Portal</h5>
+            <p class="small text-muted">Collaborative team task tracker and client management application.</p>
+            <a href="#" class="btn btn-sm btn-outline-dark rounded-pill w-100 w-sm-auto">View Project</a>
+          </div>
+        </div>
+        <!-- Project 3 -->
+        <div class="col-md-6 col-lg-4 fade-up">
+          <div class="project-card h-100 p-3">
+            <img src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=500&q=80" class="project-img rounded-3 mb-3" alt="Project Thumbnail">
+            <span class="badge bg-warning-subtle text-warning-emphasis border mb-2">WordPress</span>
+            <h5 class="fw-bold fs-6 fs-md-5">Business Agency Site</h5>
+            <p class="small text-muted">High-converting landing platform built for speed and responsive presentation.</p>
+            <a href="#" class="btn btn-sm btn-outline-dark rounded-pill w-100 w-sm-auto">View Project</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="py-5">
+    <div class="container">
+      <div class="text-center mb-4 mb-md-5">
+        <h2 class="section-title">Get In Touch</h2>
+        <p class="text-muted small">Have a question or want to discuss a new project?</p>
+      </div>
+
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <div class="p-3 p-md-5 rounded-4 bg-white border shadow-sm">
+            <form action="#" method="POST">
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <label class="form-label small fw-bold">Full Name</label>
+                  <input type="text" class="form-control" placeholder="John Doe" required>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label small fw-bold">Email Address</label>
+                  <input type="email" class="form-control" placeholder="john@example.com" required>
+                </div>
+                <div class="col-12">
+                  <label class="form-label small fw-bold">Subject</label>
+                  <input type="text" class="form-control" placeholder="Project Inquiry">
+                </div>
+                <div class="col-12">
+                  <label class="form-label small fw-bold">Message</label>
+                  <textarea class="form-control" rows="4" placeholder="Tell me about your project..." required></textarea>
+                </div>
+                <div class="col-12 text-center mt-3">
+                  <button type="submit" class="btn btn-contact-nav w-100 w-sm-auto px-5 py-2">Send Message</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="py-5 bg-white border-top">
+    <div class="container" style="max-width: 800px;">
+      <div class="text-center mb-4 mb-md-5">
+        <h2 class="section-title">Frequently Asked Questions</h2>
+      </div>
+
+      <div class="accordion" id="faqAccordion">
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+              What technical skills do you specialize in?
+            </button>
+          </h2>
+          <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+            <div class="accordion-body small">
+              I specialize in HTML5, CSS3, JavaScript, Bootstrap 5, PHP, Laravel, MySQL database management, RESTful APIs, and WordPress customization.
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+              Are your websites optimized for mobile devices?
+            </button>
+          </h2>
+          <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+            <div class="accordion-body small">
+              Yes, every layout is built using mobile-first practices to ensure full responsiveness across smartphones, tablets, and computers.
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+              Can you build custom web applications?
+            </button>
+          </h2>
+          <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+            <div class="accordion-body small">
+              Absolutely. I build tailored web tools, database systems, and dashboards designed specifically around your operational workflow.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="pt-4 pb-3 bg-light border-top">
+    <div class="container">
+      <div class="row align-items-center mb-3 pb-3 border-bottom text-center text-md-start">
+        <div class="col-md-8 mb-3 mb-md-0">
+          <h4 class="fw-bold mb-1">Have a project in mind?</h4>
+          <p class="text-muted small mb-0">Let's collaborate to bring your ideas to life.</p>
+        </div>
+        <div class="col-md-4 text-md-end">
+          <a href="#contact" class="btn btn-contact-nav w-100 w-md-auto">Start a Project</a>
+        </div>
+      </div>
+
+      <div class="row text-muted small py-2 text-center text-md-start">
+        <div class="col-md-6 mb-2 mb-md-0">
+          &copy; 2026 Ben Zahra Siham. All rights reserved.
+        </div>
+        <div class="col-md-6 text-md-end">
+          <a href="#" class="text-muted text-decoration-none me-3">Privacy Policy</a>
+          <a href="#" class="text-muted text-decoration-none">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap Bundle JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Scripts -->
+  <script>
+    const nav = document.querySelector(".navbar");
+    const navTogglerIcon = document.querySelector(".navbar-toggler-icon-custom");
+
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 50) {
+        nav.classList.add("scrolled");
+        if(navTogglerIcon) navTogglerIcon.classList.replace("text-white", "text-dark");
+      } else {
+        nav.classList.remove("scrolled");
+        if(navTogglerIcon) navTogglerIcon.classList.replace("text-dark", "text-white");
+      }
+    });
+
+    const sections = document.querySelectorAll(".animate-section");
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        const items = entry.target.querySelectorAll(".fade-up");
+        if (entry.isIntersecting) {
+          items.forEach((item, index) => {
+            setTimeout(() => {
+              item.classList.add("show");
+            }, index * 100);
+          });
+        }
+      });
+    }, { threshold: 0.1 });
+
+    sections.forEach(section => observer.observe(section));
+  </script>
+</body>
+</html>
